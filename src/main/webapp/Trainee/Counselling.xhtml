@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:b="http://bootsfaces.net/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MIC Platform</title>
+        <meta name="Bangalore Softsell Limited" content="Usha Raikar"></meta>
+    </h:head>
+    <h:body style="padding: 60px;">
+        <ui:composition template="/template.xhtml">
+            <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+            <ui:define name="main">        
+                <b:container fluid="true">
+                    <b:form id="GuestLectureForm" inline="true">
+                        <b:panel title="Batch Sprint data" >
+                            <b:panelGrid columns="6" >
+                                <h:outputText value="Registration No" style="width:40px" />
+                                <h:outputText value="Partner Name" style="width:40px" />
+                                <h:outputText value="Cluster Name" style="width:40px" />
+                                <h:outputText value="Center Name" style="width:40px" />
+                                <h:outputText value="Batch Number" style="width:40px" />
+                                <h:outputText value="Sprint" style="width:40px" />
+                                <h:outputText value="" style="width:40px" />
+                                <h:outputText value="" style="width:40px" />
+                                <h:outputText value="" style="width:40px" />
+                                <h:outputText value="" style="width:40px" />
+                                <h:outputText value="" style="width:40px" />
+                                <h:outputText value="3" style="width:40px" />
+                            </b:panelGrid>
+                        </b:panel>
+
+                        <b:panel id="amodal2" title="Counselling Update" span="12">
+                            <b:panelGrid columns="2" >
+                                <h:outputText value="Improved Areas" style="width:150px" />
+                                <b:inputTextarea id="tname1" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="Need to improve" style="width:150px" />
+                                <b:inputTextarea id="tname2" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="Interested in Job / Entrepreneurship / Higher Education" style="width:150px" />
+                                <b:inputTextarea id="tname3" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="if Interested in Job, will relocate to other cities or wants local job only" style="width:150px" />
+                                <b:inputTextarea id="tname4" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="If interested in Entrepreneurship or Self Employment, which business prefers to do " style="width:150px" />
+                                <b:inputTextarea id="tname5" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="If wanted to pursue higher education, what course wants to pursue / complete" style="width:150px" />
+                                <b:inputTextarea id="tname6" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="Any other remarks" style="width:150px" />
+                                <b:inputTextarea id="tname7" maxlength="240" style="width:400px" rows="4" />
+                                <h:outputText value="Counselling Date"   />
+                                <b:datepicker  value="#{appMapBean.entryDate}" tooltip="Enter date of Counselling"/>
+                                <h:outputText value="HHH Rep Name" style="width:40px" />
+                                <b:inputText id="tname8" maxlength="40" style="width:200px" 
+                                             placeholder="Entry person Name " />
+
+                            </b:panelGrid>
+                            <f:facet name="footer" >
+                                <b:commandButton value="Update" look="primary" />
+                                <p>  </p>
+                                <b:commandButton value="Quit" look="primary"  />
+
+                            </f:facet>
+                        </b:panel>
+                    </b:form>
+                </b:container>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

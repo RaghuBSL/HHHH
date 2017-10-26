@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:b="http://bootsfaces.net/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MIC Platform</title>
+        <meta name="Bangalore Softsell Limited" content="Usha Raikar"></meta>
+    </h:head>
+    <h:body style="padding: 60px;">
+        <ui:composition template="/template.xhtml">
+            <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+            <ui:define name="main">        
+                <b:container fluid="true">
+                    <b:form id="GuestLectureForm" inline="true">
+                        <b:panel title="Batch Sprint data" >
+                                    <b:panelGrid columns="6" >
+                                        <h:outputText value="Registration No" style="width:40px" />
+                                        <h:outputText value="Partner Name" style="width:40px" />
+                                        <h:outputText value="Cluster Name" style="width:40px" />
+                                        <h:outputText value="Center Name" style="width:40px" />
+                                        <h:outputText value="Batch Number" style="width:40px" />
+                                        <h:outputText value="Sprint" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="3" style="width:40px" />
+                                    </b:panelGrid>
+                                </b:panel>
+
+                        <b:panel id="amodal2" title="Guest Lecture Update" span="4">
+                            <b:panelGrid columns="2" >
+                                <h:outputText value="Batch Number" style="width:40px" />
+                                <b:inputText id="tname1" maxlength="40" style="width:200px" readonly="true"
+                                             />
+                                <h:outputText value="Meeting Date"   />
+                                <b:datepicker  value="#{appMapBean.entryDate}" tooltip="Enter Week ending date for Group meeting"/>
+                                <h:outputText value="Guest Lecturer" style="width:40px" />
+                                <b:inputText id="tname2" maxlength="40" style="width:200px" 
+                                             placeholder="Name of Guest person " />
+                                 <h:outputText value="Lecture Mode"  style="width:40px" />
+                                <b:selectOneMenu  id="atg" value="#{sprintController.trainee}" >
+                                    <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                    <f:selectItems value="#{appMapBean.guestLecture}" />
+                                </b:selectOneMenu>                                
+
+                                <h:outputText value="HHH Rep Name" style="width:40px" />
+                                <b:inputText id="tname3" maxlength="40" style="width:200px" 
+                                             placeholder="Entry person Name " />
+                                <h:outputText value="Remarks" style="width:40px" />
+                                <b:inputTextarea id="rmk" maxlength="200" style="width:200px" rows="4"
+                                                 value="#{sprintController.remarks}"
+                                                 placeholder="remarks " />
+                            </b:panelGrid>
+                            <f:facet name="footer" >
+                                <b:commandButton value="Update" look="primary" />
+                                <p>  </p>
+                                <b:commandButton value="Quit" look="primary"  />
+
+                            </f:facet>
+                        </b:panel>
+                    </b:form>
+                </b:container>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

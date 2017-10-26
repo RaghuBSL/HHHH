@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:b="http://bootsfaces.net/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>MIC Platform</title>
+        <meta name="Bangalore Softsell Limited" content="Usha Raikar"></meta>
+    </h:head>
+    <h:body style="padding: 60px;">
+        <ui:composition template="/template.xhtml">
+            <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+            <ui:define name="main">
+                <b:container fluid="true">
+                    <b:form id="OutdoorForm" inline="true">
+                        <b:messages id="allmsg" />
+                        <b:panel title ="Sprint List" look="primary" medium-screen="12" >
+                            <h:form>
+                                <b:panel title="Batch Sprint data" >
+                                    <b:panelGrid columns="6" >
+                                        <h:outputText value="Registration No" style="width:40px" />
+                                        <h:outputText value="Partner Name" style="width:40px" />
+                                        <h:outputText value="Cluster Name" style="width:40px" />
+                                        <h:outputText value="Center Name" style="width:40px" />
+                                        <h:outputText value="Batch Number" style="width:40px" />
+                                        <h:outputText value="Sprint" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="" style="width:40px" />
+                                        <h:outputText value="3" style="width:40px" />
+                                    </b:panelGrid>
+                                </b:panel>
+
+
+
+
+                                  <b:dataTable value="#{sprintController.items}" var="item"  searching="false"
+                                               page-length="10" page-length-menu="10,15,20"  >
+                                    <f:facet name="header" >
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Batch Number</th>
+                                            <th>Sprint #</th>
+                                            <th>Date</th>
+                                            <th>Roll Number</th>
+                                            <th>Name</th>
+                                            <th>Grade</th>
+                                            <th>Update</th>
+
+                                        </tr>
+                                    </f:facet>
+                                    <b:dataTableColumn  value="#{item.batchID}" />
+                                    <b:dataTableColumn  value="#{item.batchNumber}" />
+                                    <b:dataTableColumn  value="#{item.sprint}"  />                            
+                                    <b:dataTableColumn  value="#{item.workDate}"  />
+                                    <b:dataTableColumn  value="#{item.rollNumber}" />
+                                    <b:dataTableColumn  value="#{item.name}" />
+                                    <b:dataTableColumn  >
+                                        <b:selectOneMenu  id="atg" value="#{item.score}" >
+                                            <f:selectItem itemLabel="(Please select)" itemValue="" />
+                                            <f:selectItems value="#{appMapBean.grade}" />
+                                        </b:selectOneMenu> 
+                                    </b:dataTableColumn>   
+                                    <b:dataTableColumn  value="UPDATE"   />
+                                </b:dataTable>
+                            </h:form>
+                            <f:facet name="footer" >
+                                <b:commandButton value="Update" look="primary" />
+                                <p>  </p>
+                                <b:commandButton value="Quit" look="primary"  />
+
+                            </f:facet>
+                        </b:panel>  
+
+                    </b:form>
+
+                </b:container>
+            </ui:define>
+        </ui:composition>    
+    </h:body>
+</html>

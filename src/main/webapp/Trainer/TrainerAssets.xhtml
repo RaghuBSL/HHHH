@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:b="http://bootsfaces.net/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>MIC Platform</title>
+        <meta name="Bangalore Softsell Limited" content="Usha Raikar"></meta>
+    </h:head>
+    <h:body style="padding: 60px;">
+        <ui:composition template="/template.xhtml">
+            <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+            <ui:define name="main">        
+                <b:container fluid="true">
+                    <b:form id="TrainerAssetsForm" inline="true">
+                        <b:messages id="allmsg" />
+
+
+                        <b:panel title ="Trainer Assets Tracker "  span="6" >
+                            <b:panelGrid columns="2" >    
+                                <h:outputText value="Trainer ID" />
+                                <h:outputText value="1234" />
+
+                                <h:outputText value="Name " style="width:60px"/>
+                                <b:inputTextarea id="legalname" maxlength="60"  rows="2" span="3" readonly="true"
+                                                 value="Trainer Manjunath " />
+
+                                <h:outputText value="Notebook" />
+                                <b:inputTextarea id="laptop" maxlength="300"  rows="4" span="3" />
+                                <h:outputText id="cbx1" value="Computer Loaned?" />
+
+                                <b:selectBooleanCheckbox caption="" />
+                                
+                                <h:outputText id="cbx2" value="Computer returned?" />
+                                <b:selectBooleanCheckbox caption="" />  
+                                
+                                <h:outputText value="Dongle" />
+                                <b:inputTextarea id="dongle" maxlength="300"  rows="4" span="3" />
+                                
+                                <h:outputText id="cbx6" value="Loaned?" />
+                                <b:selectBooleanCheckbox caption="" />
+                                
+                                <h:outputText id="cbx5" value="Returned?" />
+                                <b:selectBooleanCheckbox caption="" />  
+                                
+                                <h:outputText value="Pendrives" />
+                                <b:inputTextarea id="pendrv" maxlength="300"  rows="4" span="3" />
+                                
+                                <h:outputText id="cbx3" value="Loaned?" />
+                                <b:selectBooleanCheckbox caption="" />
+                                
+                                <h:outputText id="cbx4" value="Returned?" />
+                                <b:selectBooleanCheckbox caption="" />
+                                 <h:outputText value="HHH Rep Name"   />
+                                <b:inputText   placeholder="Person Name" 
+                                               value="#{partnerController.onboard.hhhRepName}"
+                                               maxlength="40" tooltip="Enter Name of the person who did Onboarding" />
+                                <h:outputText value="Remarks "  />
+                                <b:inputTextarea id="remark3" rows="5" 
+                                                 placeholder="Remarks" />
+
+                                <h:outputText value="Date of Activity"   />
+                                <b:datepicker  value="#{appMapBean.entryDate}" tooltip="Enter date when Onboarding is conducted"/>
+                               
+                                
+                            </b:panelGrid>
+
+                            <f:facet name="footer" >     
+
+                                <b:commandButton value="Save" ajax="true" 
+                                                 update="@form" look="primary" />
+
+                            </f:facet>
+                        </b:panel>
+                    </b:form>
+                </b:container>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

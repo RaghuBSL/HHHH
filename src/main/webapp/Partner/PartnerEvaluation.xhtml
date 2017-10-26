@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:b="http://bootsfaces.net/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>MIC Platform</title>
+        <meta name="Bangalore Softsell Limited" content="Usha Raikar"></meta>
+    </h:head>
+    <h:body style="padding: 60px;">
+        <ui:composition template="/template.xhtml">
+            <f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
+            <ui:define name="main">        
+                <b:container fluid="true">
+                    <b:form id="PartnerEvaluation" inline="true">
+                        <b:messages id="allmsg" />
+
+
+                        <b:panel title="Partner Evaluation" span="6" >
+                            <b:panelGrid columns="2" >
+
+                                <h:outputText value="Partner ID " />
+                                <h:outputText value="000023"  />
+                                <h:outputText value="Legal Name "  />
+                                <h:outputText id="legalname" value="ABC Training Corp" />
+                                <h:outputText value="Date of Evaluation"   />
+
+                                <b:datepicker  value="#{partnerController.infra.auditDate}" tooltip="Enter date when Audit is conducted"/>
+                                <h:outputText value="Site Status "   />
+                                <b:inputTextarea rows="4" span="5" 
+                                                 placeholder="current Partners , programs " />
+                                <h:outputText value="Other detail "   />
+                                <b:inputTextarea rows="4" span="5" 
+                                                 placeholder="Bus, transport Features, distance " />
+                                <h:outputText value="Catchment "   />
+                                <b:inputTextarea rows="4" span="5" 
+                                                 placeholder="nearby Villages - size "/>
+                                <h:outputText value="HHH Rep Name"   />
+                                <b:inputText   placeholder="Person Name" 
+
+                                               maxlength="40" tooltip="Enter Name of the person who did Review" />
+                                <h:outputText value="Remarks / Partner Feedback"  />
+                                <b:inputTextarea id="remark2" rows="5" 
+                                                 placeholder="Describe review remarks" />
+                                <h:outputText value="Decision "   />
+                                <b:inputTextarea rows="4" span="5"
+                                                 placeholder="Enter NO, Feasible, Good, Hold and narrate "/>
+                                <h:outputText value="Score"   />
+                                <b:touchSpin id="spin2" col-md="3" value="#{appMapBean.spinValue}" min="1" max="10" step="1" />
+                                
+
+                            </b:panelGrid>    
+                        </b:panel>    
+
+
+                        <b:panel title="Partner Site Evaluation Detail - (Criteria marked * is Mandatory)" span="6" > 
+                            <b:panelGrid columns="2" >
+                                <h:outputText value="Criteria" />
+                                <b:selectOneMenu id="sel4" value="#{partnerController.screening}">
+                                    <f:selectItems value="#{appMapBean.siteEvaluationCheckList}" />
+                                </b:selectOneMenu>
+                                <h:outputText value="What is available Today ?"  />
+                                <b:inputTextarea   placeholder="facilities" value="" span="4"
+                                                   style="width:300px"
+                                                   />
+                                <h:outputText value="Possibilities for scaling up "   />
+                                <b:inputTextarea id="possi" rows="3" value="" span="4" style="width:300px"
+                                                 placeholder="other facility, impediments" />
+                                <h:outputText value="Cost, an Issue? Other Challenges"   />
+                                <b:inputTextarea id="remark" rows="5" value="" span="4" style="width:300px"
+                                                 placeholder="Describe potential and perceptions" />
+                            </b:panelGrid>
+                            <b:commandButton value="Add" ajax="true"  look="primary"  
+                                             update="@form @(.content)"  />
+                        </b:panel>
+                        <b:panel title ="Evaluation List" look="primary" medium-screen="12" >
+                            <h:form id="infraForm">
+                                  <b:dataTable value="#{partnerController.infraItems}" var="infra" 
+                                               searching="false" paginated="false"
+                                               >
+                                    <f:facet name="header" >
+                                        <tr>
+                                            <th>Criteria Number</th>
+                                            <th>Criteria</th>
+                                            <th>Availability</th>
+                                            <th>Scaling up</th>
+                                            <th>Challenges</th>
+
+                                        </tr>
+                                    </f:facet>
+
+                                    <b:commandButton value="Edit"   look="primary"  />
+                                </b:dataTable>
+                            </h:form>
+                        </b:panel>           
+
+                    </b:form>
+                </b:container>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
